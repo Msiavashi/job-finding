@@ -1,0 +1,1819 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Jobjoo API Documentation"
+host: "localhost:4000"
+basePath: "/"
+tags: []
+schemes:
+- "http"
+paths:
+  /:
+    get:
+      tags:
+      - ""
+      summary: "Root API"
+      operationId: "get"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "DefaultController"
+  /account/logout:
+    get:
+      tags:
+      - "account"
+      summary: "Logout API"
+      operationId: "getAccountLogout"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Account"
+  /account/user:
+    get:
+      tags:
+      - "account"
+      summary: "Validate User API"
+      operationId: "getAccountUser"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Account"
+  /admin/companies:
+    get:
+      tags:
+      - "admin"
+      summary: "Get List Of All Companies [Only Admins]"
+      operationId: "getAdminCompanies"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Admin"
+  /admin/users:
+    get:
+      tags:
+      - "admin"
+      summary: "List All Users [Only Admins]"
+      operationId: "getAdminUsers"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Admin"
+  /basic-info/countries:
+    get:
+      tags:
+      - "basic-info"
+      summary: "Get List Of All Countries"
+      operationId: "getBasicinfoCountries"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+    post:
+      tags:
+      - "basic-info"
+      summary: "Post Countries [Only Admins]"
+      operationId: "postBasicinfoCountries"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 5"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/countries-and-states:
+    get:
+      tags:
+      - "basic-info"
+      summary: "Get List Of All Countries And Their Related States"
+      operationId: "getBasicinfoCountriesandstates"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/countries-and-states-and-cities:
+    get:
+      tags:
+      - "basic-info"
+      summary: "Get List Of All Countries And Their Related States And Their Related\
+        \ Cities"
+      operationId: "getBasicinfoCountriesandstatesandcities"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/languages:
+    get:
+      tags:
+      - "basic-info"
+      summary: "Get List Of All Languages"
+      operationId: "getBasicinfoLanguages"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+    post:
+      tags:
+      - "basic-info"
+      summary: "Post Language (Only Admins)"
+      operationId: "postBasicinfoLanguages"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 6"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/skills-and-categories:
+    get:
+      tags:
+      - "basic-info"
+      summary: "Get List Of All Categories And Their Related Skills"
+      operationId: "getBasicinfoSkillsandcategories"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/skills-category:
+    get:
+      tags:
+      - "basic-info"
+      summary: "Get List Of All Skill Categories"
+      operationId: "getBasicinfoSkillscategory"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+    post:
+      tags:
+      - "basic-info"
+      summary: "Post Skills Category [Only Admins]"
+      operationId: "postBasicinfoSkillscategory"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 8"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/states-and-cities:
+    get:
+      tags:
+      - "basic-info"
+      summary: "Get List Of All States And Their Related Cities"
+      operationId: "getBasicinfoStatesandcities"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /jobs/{company}:
+    get:
+      tags:
+      - "jobs"
+      summary: "Find Jobs Of A Company"
+      operationId: "getJobsCompany"
+      parameters:
+      - name: "company"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Jobs"
+  /profile/profile-image:
+    get:
+      tags:
+      - "profile"
+      summary: "Get Profile Image"
+      operationId: "getProfileProfileimage"
+      parameters:
+      - name: "responseType"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Profile"
+    post:
+      tags:
+      - "profile"
+      summary: "Upload Profile Image"
+      operationId: "postProfileProfileimage"
+      consumes:
+      - "multipart/form-data"
+      parameters:
+      - name: "data"
+        in: "formData"
+        description: "Select a file to upload"
+        required: true
+        type: "file"
+        x-meta:
+          swaggerType: "file"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Profile"
+  /resume-creator/resume:
+    get:
+      tags:
+      - "resume-creator"
+      summary: "Get Complete Resume"
+      operationId: "getResumecreatorResume"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "ResumeCreator"
+  /resume-creator/step-five:
+    get:
+      tags:
+      - "resume-creator"
+      summary: "Get Step Five Data"
+      operationId: "getResumecreatorStepfive"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "ResumeCreator"
+    post:
+      tags:
+      - "resume-creator"
+      summary: "Post Step Five Data"
+      operationId: "postResumecreatorStepfive"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 19"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "ResumeCreator"
+  /resume-creator/step-four:
+    get:
+      tags:
+      - "resume-creator"
+      summary: "Get Step Four Data"
+      operationId: "getResumecreatorStepfour"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "ResumeCreator"
+    post:
+      tags:
+      - "resume-creator"
+      summary: "Post Step Four Data"
+      operationId: "postResumecreatorStepfour"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 22"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "ResumeCreator"
+  /resume-creator/step-one:
+    get:
+      tags:
+      - "resume-creator"
+      summary: "Get Step One Data"
+      operationId: "getResumecreatorStepone"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "ResumeCreator"
+    post:
+      tags:
+      - "resume-creator"
+      summary: "Post Step One Data"
+      operationId: "postResumecreatorStepone"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 23"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "ResumeCreator"
+  /resume-creator/step-three:
+    get:
+      tags:
+      - "resume-creator"
+      summary: "Get Step Three Data"
+      operationId: "getResumecreatorStepthree"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "ResumeCreator"
+    post:
+      tags:
+      - "resume-creator"
+      summary: "Post Step Three Data"
+      operationId: "postResumecreatorStepthree"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 25"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "ResumeCreator"
+  /resume-creator/step-two:
+    get:
+      tags:
+      - "resume-creator"
+      summary: "Get Step Two Data"
+      operationId: "getResumecreatorSteptwo"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "ResumeCreator"
+    post:
+      tags:
+      - "resume-creator"
+      summary: "Post Step Two Data"
+      operationId: "postResumecreatorSteptwo"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 27"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "ResumeCreator"
+  /test/test-authentication:
+    get:
+      tags:
+      - "test"
+      summary: "Authentication Test"
+      operationId: "getTestTestauthentication"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Test"
+  /admin/user-resume/{userid}:
+    get:
+      tags:
+      - "admin"
+      summary: "Get User Resume [Only Admins]"
+      operationId: "getAdminUserresumeUserid"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Admin"
+  /api/v1/paintings:
+    get:
+      tags:
+      - "api"
+      summary: "Get All The Paintings"
+      operationId: "getApiV1Paintings"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Api"
+    post:
+      tags:
+      - "api"
+      summary: "Get A Specific Painting By ID"
+      operationId: "postApiV1Paintings"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Api"
+  /basic-info/cities/{stateid}:
+    get:
+      tags:
+      - "basic-info"
+      summary: "Get List Of All Cities"
+      operationId: "getBasicinfoCitiesStateid"
+      parameters:
+      - name: "stateid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/skills/{categoryid}:
+    get:
+      tags:
+      - "basic-info"
+      summary: "Get List Of All Skills"
+      operationId: "getBasicinfoSkillsCategoryid"
+      parameters:
+      - name: "categoryid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/states/{countryid}:
+    get:
+      tags:
+      - "basic-info"
+      summary: "Get List Of All States"
+      operationId: "getBasicinfoStatesCountryid"
+      parameters:
+      - name: "countryid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /search/complex/jobs:
+    get:
+      tags:
+      - "search"
+      summary: "Return A List Of Jobs Based On Query [Complex Search]"
+      operationId: "getSearchComplexJobs"
+      parameters:
+      - name: "q"
+        in: "query"
+        required: true
+        type: "string"
+        maxLength: 30
+      - name: "contractTypes"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Search"
+  /search/simple/jobs:
+    get:
+      tags:
+      - "search"
+      summary: "Return A List Of Jobs Based On Query [Simple Search]"
+      operationId: "getSearchSimpleJobs"
+      parameters:
+      - name: "q"
+        in: "query"
+        required: true
+        type: "string"
+        maxLength: 30
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Search"
+  /account/login:
+    post:
+      tags:
+      - "account"
+      summary: "Login API"
+      operationId: "postAccountLogin"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 1"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Account"
+  /account/signup:
+    post:
+      tags:
+      - "account"
+      summary: "SignUp API"
+      operationId: "postAccountSignup"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 2"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Account"
+  /admin/get-documents:
+    post:
+      tags:
+      - "admin"
+      summary: "List All Documents In Given Collection"
+      operationId: "postAdminGetdocuments"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 3"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Admin"
+  /basic-info/cities:
+    post:
+      tags:
+      - "basic-info"
+      summary: "Post Cities [Only Admins]"
+      operationId: "postBasicinfoCities"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 4"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/skills:
+    post:
+      tags:
+      - "basic-info"
+      summary: "Post Skill [Only Admins]"
+      operationId: "postBasicinfoSkills"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 7"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/states:
+    post:
+      tags:
+      - "basic-info"
+      summary: "Post States [Only Admins]"
+      operationId: "postBasicinfoStates"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 9"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /jobs/new-job:
+    post:
+      tags:
+      - "jobs"
+      summary: "Post A New Job"
+      operationId: "postJobsNewjob"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 12"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Jobs"
+  /profile/recruiter-data:
+    post:
+      tags:
+      - "profile"
+      summary: "Store Recruiter Profile Data"
+      operationId: "postProfileRecruiterdata"
+      consumes:
+      - "multipart/form-data"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 13"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Profile"
+  /profile/user-data:
+    post:
+      tags:
+      - "profile"
+      summary: "Store Primary Profile Data"
+      operationId: "postProfileUserdata"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 14"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Profile"
+  /register/register-number:
+    post:
+      tags:
+      - "register"
+      summary: "Register Phone Number"
+      operationId: "postRegisterRegisternumber"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 15"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Register"
+  /register/validate-number:
+    post:
+      tags:
+      - "register"
+      summary: "Validate Registered Number"
+      operationId: "postRegisterValidatenumber"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 16"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Register"
+  /register/validate-number-set-user:
+    post:
+      tags:
+      - "register"
+      summary: "Validate Registered Number and set user "
+      operationId: "postRegisterValidatenumbersetuser"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 17"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Register"
+  /test/validations:
+    post:
+      tags:
+      - "test"
+      summary: "Test Different Validations"
+      operationId: "postTestValidations"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 28"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Test"
+  /basic-info/category-name/{categoryid}:
+    post:
+      tags:
+      - "basic-info"
+      summary: "Get Specific Category Details [Only Admins]"
+      operationId: "postBasicinfoCategorynameCategoryid"
+      parameters:
+      - name: "categoryid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/location-name/{id}:
+    post:
+      tags:
+      - "basic-info"
+      summary: "Get Location Details Based On Id"
+      operationId: "postBasicinfoLocationnameId"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 29"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /admin/delete-documents:
+    delete:
+      tags:
+      - "admin"
+      summary: "Delete All Documents From A Collection"
+      operationId: "deleteAdminDeletedocuments"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/Model 3"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Admin"
+  /admin/drop-db:
+    delete:
+      tags:
+      - "admin"
+      summary: "Drop Database"
+      operationId: "deleteAdminDropdb"
+      parameters: []
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Admin"
+  /basic-info/cities/{cityid}:
+    delete:
+      tags:
+      - "basic-info"
+      summary: "Delete Specific City [Only Admins]"
+      operationId: "deleteBasicinfoCitiesCityid"
+      parameters:
+      - name: "cityid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/countries/{countryid}:
+    delete:
+      tags:
+      - "basic-info"
+      summary: "Delete Specific Country [Only Admins]"
+      operationId: "deleteBasicinfoCountriesCountryid"
+      parameters:
+      - name: "countryid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/languages/{languageid}:
+    delete:
+      tags:
+      - "basic-info"
+      summary: "Delete Specific Language [Only Admins]"
+      operationId: "deleteBasicinfoLanguagesLanguageid"
+      parameters:
+      - name: "languageid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/skills/{skillid}:
+    delete:
+      tags:
+      - "basic-info"
+      summary: "Delete Specific Skill [Only Admins]"
+      operationId: "deleteBasicinfoSkillsSkillid"
+      parameters:
+      - name: "skillid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/skills-category/{categoryid}:
+    delete:
+      tags:
+      - "basic-info"
+      summary: "Delete Specific Category [Only Admins]"
+      operationId: "deleteBasicinfoSkillscategoryCategoryid"
+      parameters:
+      - name: "categoryid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /basic-info/states/{stateid}:
+    delete:
+      tags:
+      - "basic-info"
+      summary: "Delete Specific State [Only Admins]"
+      operationId: "deleteBasicinfoStatesStateid"
+      parameters:
+      - name: "stateid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "BasicInfo"
+  /profile/profile-type/{profile_type}:
+    put:
+      tags:
+      - "profile"
+      summary: "Set Profile Type (Recruiter / Recruitee)"
+      operationId: "putProfileProfiletypeProfile_type"
+      parameters:
+      - name: "profile_type"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Successful"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Profile"
+securityDefinitions:
+  jwt:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+definitions:
+  Model 1:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+        default: "admin"
+      password:
+        type: "string"
+        maxLength: 15
+        default: "J0bj00@dmin123"
+      specialParameter:
+        type: "string"
+        default: "isAdmin"
+    example:
+      password: "J0bj00@dmin123"
+      specialParameter: "isAdmin"
+      username: "admin"
+  Model 2:
+    type: "object"
+    required:
+    - "email"
+    properties:
+      specialParameter:
+        type: "string"
+      username:
+        type: "string"
+        maxLength: 12
+      password:
+        type: "string"
+        maxLength: 20
+      email:
+        type: "string"
+        x-format:
+          email: true
+      name:
+        type: "string"
+        maxLength: 20
+      surname:
+        type: "string"
+        maxLength: 20
+      nameFa:
+        type: "string"
+        maxLength: 20
+      surnameFa:
+        type: "string"
+        maxLength: 20
+      isAdmin:
+        type: "boolean"
+    example:
+      specialParameter: "specialParameter"
+      password: "password"
+      surname: "surname"
+      name: "name"
+      nameFa: "nameFa"
+      surnameFa: "surnameFa"
+      isAdmin: true
+      email: "email"
+      username: "username"
+  Model 3:
+    type: "object"
+    required:
+    - "collectionName"
+    properties:
+      collectionName:
+        type: "string"
+    example:
+      collectionName: "collectionName"
+  Model 4:
+    type: "object"
+    required:
+    - "cityName"
+    - "cityNameFa"
+    - "stateId"
+    properties:
+      stateId:
+        type: "string"
+      cityName:
+        type: "string"
+        maxLength: 15
+      cityNameFa:
+        type: "string"
+        maxLength: 15
+    example:
+      cityName: "cityName"
+      stateId: "stateId"
+      cityNameFa: "cityNameFa"
+  Model 5:
+    type: "object"
+    required:
+    - "countryName"
+    - "countryNameFa"
+    properties:
+      countryName:
+        type: "string"
+        maxLength: 25
+      countryNameFa:
+        type: "string"
+        maxLength: 25
+    example:
+      countryNameFa: "countryNameFa"
+      countryName: "countryName"
+  Model 6:
+    type: "object"
+    required:
+    - "languageName"
+    - "languageNameFa"
+    properties:
+      id:
+        type: "string"
+      languageName:
+        type: "string"
+      languageNameFa:
+        type: "string"
+    example:
+      id: "id"
+      languageName: "languageName"
+      languageNameFa: "languageNameFa"
+  Model 7:
+    type: "object"
+    required:
+    - "skillCategoryId"
+    - "skillName"
+    - "skillNameFa"
+    properties:
+      skillCategoryId:
+        type: "string"
+      skillName:
+        type: "string"
+        maxLength: 15
+      skillNameFa:
+        type: "string"
+        maxLength: 15
+    example:
+      skillName: "skillName"
+      skillCategoryId: "skillCategoryId"
+      skillNameFa: "skillNameFa"
+  Model 8:
+    type: "object"
+    required:
+    - "categoryName"
+    - "categoryNameFa"
+    properties:
+      categoryName:
+        type: "string"
+        maxLength: 15
+      categoryNameFa:
+        type: "string"
+        maxLength: 15
+    example:
+      categoryNameFa: "categoryNameFa"
+      categoryName: "categoryName"
+  Model 9:
+    type: "object"
+    required:
+    - "countryId"
+    - "stateName"
+    - "stateNameFa"
+    properties:
+      countryId:
+        type: "string"
+      stateName:
+        type: "string"
+        maxLength: 15
+      stateNameFa:
+        type: "string"
+        maxLength: 15
+    example:
+      stateNameFa: "stateNameFa"
+      stateName: "stateName"
+      countryId: "countryId"
+  requiredSkills:
+    type: "array"
+    items:
+      type: "string"
+  Model 10:
+    type: "object"
+    required:
+    - "exempted"
+    - "finished"
+    - "inProgress"
+    - "incomplete"
+    properties:
+      finished:
+        type: "boolean"
+      exempted:
+        type: "boolean"
+      inProgress:
+        type: "boolean"
+      incomplete:
+        type: "boolean"
+  militaryService:
+    type: "array"
+    items:
+      $ref: "#/definitions/Model 10"
+  Model 11:
+    type: "object"
+    required:
+    - "associateDegree"
+    - "bachelors"
+    - "diploma"
+    - "masters"
+    - "phd"
+    properties:
+      diploma:
+        type: "boolean"
+      associateDegree:
+        type: "boolean"
+      bachelors:
+        type: "boolean"
+      masters:
+        type: "boolean"
+      phd:
+        type: "boolean"
+  degree:
+    type: "array"
+    items:
+      $ref: "#/definitions/Model 11"
+  Model 12:
+    type: "object"
+    required:
+    - "ageRange"
+    - "agreeableSalary"
+    - "city"
+    - "degreeImportance"
+    - "experience"
+    - "jobDescription"
+    - "jobResponsibilities"
+    - "jobTitle"
+    - "militaryServiceImportance"
+    - "minimumRequirements"
+    - "neighbourhood"
+    - "state"
+    properties:
+      jobTitle:
+        type: "string"
+      jobDescription:
+        type: "string"
+      jobResponsibilities:
+        type: "string"
+      minimumRequirements:
+        type: "string"
+      requiredSkills:
+        $ref: "#/definitions/requiredSkills"
+      agreeableSalary:
+        type: "boolean"
+      salaryMin:
+        type: "number"
+        x-alternatives:
+        - type: "number"
+      salaryMax:
+        type: "number"
+        x-alternatives:
+        - type: "number"
+      ageRange:
+        type: "boolean"
+      ageMin:
+        type: "number"
+        x-alternatives:
+        - type: "number"
+      ageMax:
+        type: "number"
+        x-alternatives:
+        - type: "number"
+      experience:
+        type: "boolean"
+      experienceMin:
+        type: "number"
+        x-alternatives:
+        - type: "number"
+      experienceMax:
+        type: "number"
+        x-alternatives:
+        - type: "number"
+      cooperationType:
+        $ref: "#/definitions/requiredSkills"
+      militaryServiceImportance:
+        type: "boolean"
+      militaryService:
+        $ref: "#/definitions/militaryService"
+      degreeImportance:
+        type: "boolean"
+      degree:
+        $ref: "#/definitions/degree"
+      state:
+        type: "string"
+      city:
+        type: "string"
+      neighbourhood:
+        type: "string"
+    example:
+      ageRange: true
+      ageMax: 5.962133916683182377482808078639209270477294921875
+      city: "city"
+      jobTitle: "jobTitle"
+      experienceMin: 5.63737665663332876420099637471139430999755859375
+      militaryService: ""
+      degree: ""
+      experience: true
+      salaryMax: 6.02745618307040320615897144307382404804229736328125
+      jobResponsibilities: "jobResponsibilities"
+      ageMin: 1.46581298050294517310021547018550336360931396484375
+      militaryServiceImportance: true
+      cooperationType: ""
+      degreeImportance: true
+      neighbourhood: "neighbourhood"
+      jobDescription: "jobDescription"
+      requiredSkills: ""
+      experienceMax: 2.3021358869347654518833223846741020679473876953125
+      state: "state"
+      minimumRequirements: "minimumRequirements"
+      salaryMin: 0.80082819046101150206595775671303272247314453125
+      agreeableSalary: true
+  Model 13:
+    type: "object"
+    required:
+    - "address"
+    - "group"
+    - "landline"
+    - "recruiterType"
+    properties:
+      recruiterType:
+        type: "string"
+        enum:
+        - "real"
+        - "legal"
+      fullName:
+        type: "string"
+        x-alternatives:
+        - type: "string"
+      nationalId:
+        type: "string"
+        x-alternatives:
+        - type: "string"
+      nationalCardPhoto:
+        type: "file"
+        x-alternatives:
+        - type: "file"
+          x-meta:
+            swaggerType: "file"
+          in: "formData"
+        x-meta:
+          swaggerType: "file"
+      companyName:
+        type: "string"
+        x-alternatives:
+        - type: "string"
+      registrationNumber:
+        type: "string"
+        x-alternatives:
+        - type: "string"
+      ceoName:
+        type: "string"
+        x-alternatives:
+        - type: "string"
+      numberOfEmployees:
+        type: "number"
+        x-alternatives:
+        - type: "number"
+      website:
+        type: "string"
+        x-alternatives:
+        - type: "string"
+      newspaperPhoto:
+        type: "file"
+        x-alternatives:
+        - type: "file"
+          x-meta:
+            swaggerType: "file"
+          in: "formData"
+        x-meta:
+          swaggerType: "file"
+      address:
+        type: "string"
+      landline:
+        type: "string"
+      group:
+        type: "string"
+  Model 14:
+    type: "object"
+    properties:
+      nameEnglish:
+        type: "string"
+        maxLength: 20
+        default: "Farzad"
+      surnameEnglish:
+        type: "string"
+        maxLength: 30
+        default: "Soltani"
+      nameFarsi:
+        type: "string"
+        maxLength: 20
+        default: "فرزاد"
+      surnameFarsi:
+        type: "string"
+        maxLength: 30
+        default: "سلطانی"
+      userName:
+        type: "string"
+        maxLength: 15
+        default: "farzadso"
+      email:
+        type: "string"
+        default: "farzad.au@gmail.com"
+        x-format:
+          email: true
+      nationalId:
+        type: "string"
+        maxLength: 10
+        default: "0890054551"
+      passportNumber:
+        type: "string"
+        default: "H1234567"
+    example:
+      nameFarsi: "فرزاد"
+      passportNumber: "H1234567"
+      nationalId: "0890054551"
+      nameEnglish: "Farzad"
+      surnameEnglish: "Soltani"
+      surnameFarsi: "سلطانی"
+      userName: "farzadso"
+      email: "farzad.au@gmail.com"
+  Model 15:
+    type: "object"
+    required:
+    - "phoneNumber"
+    properties:
+      phoneNumber:
+        type: "string"
+        x-constraint:
+          length: 10
+      purpose:
+        type: "string"
+        default: "register"
+        enum:
+        - "register"
+        - "login"
+    example:
+      phoneNumber: "phoneNumber"
+      purpose: "register"
+  Model 16:
+    type: "object"
+    required:
+    - "phoneNumber"
+    - "verificationCode"
+    properties:
+      phoneNumber:
+        type: "string"
+        x-constraint:
+          length: 10
+      verificationCode:
+        type: "string"
+        x-constraint:
+          length: 4
+      purpose:
+        type: "string"
+        default: "register"
+        enum:
+        - "register"
+        - "login"
+      userRole:
+        type: "string"
+        x-alternatives:
+        - type: "string"
+        - type: "string"
+    example:
+      phoneNumber: "phoneNumber"
+      purpose: "register"
+      userRole: "userRole"
+      verificationCode: "verificationCode"
+  Model 17:
+    type: "object"
+    required:
+    - "phoneNumber"
+    - "userRole"
+    - "verificationCode"
+    properties:
+      phoneNumber:
+        type: "string"
+        x-constraint:
+          length: 10
+      verificationCode:
+        type: "string"
+        x-constraint:
+          length: 4
+      userRole:
+        type: "string"
+    example:
+      phoneNumber: "phoneNumber"
+      userRole: "userRole"
+      verificationCode: "verificationCode"
+  Model 18:
+    type: "object"
+    required:
+    - "languageId"
+    - "languageName"
+    - "perfection"
+    properties:
+      languageId:
+        type: "string"
+      languageName:
+        type: "string"
+      perfection:
+        type: "string"
+  languages:
+    type: "array"
+    items:
+      $ref: "#/definitions/Model 18"
+  jobPerks:
+    type: "object"
+    required:
+    - "commutingServices"
+    - "flexibleTimes"
+    - "food"
+    - "foreignTrips"
+    - "insurance"
+    - "learningCourses"
+    - "loans"
+    - "overtime"
+    - "promotions"
+    properties:
+      promotions:
+        type: "boolean"
+      flexibleTimes:
+        type: "boolean"
+      insurance:
+        type: "boolean"
+      commutingServices:
+        type: "boolean"
+      learningCourses:
+        type: "boolean"
+      food:
+        type: "boolean"
+      overtime:
+        type: "boolean"
+      foreignTrips:
+        type: "boolean"
+      loans:
+        type: "boolean"
+    example:
+      insurance: true
+      promotions: true
+      learningCourses: true
+      flexibleTimes: true
+      commutingServices: true
+      loans: true
+      foreignTrips: true
+      overtime: true
+      food: true
+  Model 19:
+    type: "object"
+    required:
+    - "languages"
+    - "professionLevel"
+    properties:
+      languages:
+        $ref: "#/definitions/languages"
+      professionLevel:
+        type: "string"
+      contractType:
+        type: "string"
+      jobPerks:
+        $ref: "#/definitions/jobPerks"
+    example:
+      languages: ""
+      contractType: "contractType"
+      jobPerks:
+        insurance: true
+        promotions: true
+        learningCourses: true
+        flexibleTimes: true
+        commutingServices: true
+        loans: true
+        foreignTrips: true
+        overtime: true
+        food: true
+      professionLevel: "professionLevel"
+  Model 20:
+    type: "object"
+    required:
+    - "currentlyStudying"
+    - "educationalLevel"
+    - "fieldOfStudy"
+    - "institutionName"
+    - "startDate"
+    properties:
+      educationalLevel:
+        type: "string"
+      fieldOfStudy:
+        type: "string"
+      institutionName:
+        type: "string"
+      startDate:
+        type: "string"
+      endDate:
+        type: "string"
+      currentlyStudying:
+        type: "boolean"
+  educationalBackground:
+    type: "array"
+    items:
+      $ref: "#/definitions/Model 20"
+  Model 21:
+    type: "object"
+    required:
+    - "certificateName"
+    properties:
+      certificateName:
+        type: "string"
+      certificateID:
+        type: "string"
+  academicCertificates:
+    type: "array"
+    items:
+      $ref: "#/definitions/Model 21"
+  Model 22:
+    type: "object"
+    required:
+    - "educationalBackground"
+    properties:
+      educationalBackground:
+        $ref: "#/definitions/educationalBackground"
+      academicCertificates:
+        $ref: "#/definitions/academicCertificates"
+    example:
+      academicCertificates: ""
+      educationalBackground: ""
+  Model 23:
+    type: "object"
+    required:
+    - "aboutMe"
+    - "city"
+    - "email"
+    - "employmentStatus"
+    - "maritalStatus"
+    - "name"
+    - "phoneNumber"
+    - "state"
+    - "surname"
+    properties:
+      name:
+        type: "string"
+        maxLength: 20
+        default: "فرزاد"
+      surname:
+        type: "string"
+        maxLength: 25
+        default: "سلطانی"
+      employmentStatus:
+        type: "number"
+      email:
+        type: "string"
+        default: "farzad.au@gmail.com"
+        x-format:
+          email: true
+      phoneNumber:
+        type: "string"
+        default: "9121111111"
+        x-constraint:
+          length: 10
+      maritalStatus:
+        type: "number"
+      state:
+        type: "string"
+      city:
+        type: "string"
+      aboutMe:
+        type: "string"
+        maxLength: 300
+    example:
+      phoneNumber: "9121111111"
+      city: "city"
+      surname: "سلطانی"
+      name: "فرزاد"
+      state: "state"
+      employmentStatus: 0.80082819046101150206595775671303272247314453125
+      email: "farzad.au@gmail.com"
+      maritalStatus: 6.02745618307040320615897144307382404804229736328125
+      aboutMe: "aboutMe"
+  Model 24:
+    type: "object"
+    required:
+    - "companyName"
+    - "currentJob"
+    - "jobDescription"
+    - "jobTitle"
+    - "startDate"
+    properties:
+      jobTitle:
+        type: "string"
+      companyName:
+        type: "string"
+      startDate:
+        type: "string"
+      endDate:
+        type: "string"
+      currentJob:
+        type: "boolean"
+      jobDescription:
+        type: "string"
+  vocationalBackground:
+    type: "array"
+    items:
+      $ref: "#/definitions/Model 24"
+  Model 25:
+    type: "object"
+    required:
+    - "vocationalBackground"
+    properties:
+      vocationalBackground:
+        $ref: "#/definitions/vocationalBackground"
+    example:
+      vocationalBackground: ""
+  Model 26:
+    type: "object"
+    required:
+    - "skillId"
+    - "skillName"
+    - "skillNameFa"
+    properties:
+      skillId:
+        type: "string"
+      skillName:
+        type: "string"
+      skillNameFa:
+        type: "string"
+  skills:
+    type: "array"
+    items:
+      $ref: "#/definitions/Model 26"
+  Model 27:
+    type: "object"
+    required:
+    - "skills"
+    properties:
+      skills:
+        $ref: "#/definitions/skills"
+    example:
+      skills: ""
+  Model 28:
+    type: "object"
+    required:
+    - "a"
+    properties:
+      a:
+        type: "boolean"
+      b:
+        type: "string"
+        x-alternatives:
+        - type: "string"
+    example:
+      a: true
+      b: "b"
+  Model 29:
+    type: "object"
+    required:
+    - "idType"
+    properties:
+      idType:
+        type: "string"
+        enum:
+        - "country"
+        - "state"
+        - "city"
+    example:
+      idType: "country"
+x-alt-definitions:
+  Model 1:
+    type: "object"
+    properties:
+      finished:
+        type: "boolean"
+      exempted:
+        type: "boolean"
+      inProgress:
+        type: "boolean"
+      incomplete:
+        type: "boolean"
+    required:
+    - "finished"
+    - "exempted"
+    - "inProgress"
+    - "incomplete"
+  militaryService:
+    type: "array"
+    items:
+      $ref: "#/x-alt-definitions/Model 1"
+  Model 2:
+    type: "object"
+    properties:
+      diploma:
+        type: "boolean"
+      associateDegree:
+        type: "boolean"
+      bachelors:
+        type: "boolean"
+      masters:
+        type: "boolean"
+      phd:
+        type: "boolean"
+    required:
+    - "diploma"
+    - "associateDegree"
+    - "bachelors"
+    - "masters"
+    - "phd"
+  degree:
+    type: "array"
+    items:
+      $ref: "#/x-alt-definitions/Model 2"
