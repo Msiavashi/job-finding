@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // destructure schema from mongoose
 const Schema = mongoose.Schema;
 
-const recruiterDataSchema = Schema({
+const recruiterDataSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
         ref: 'users',

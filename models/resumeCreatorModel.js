@@ -7,7 +7,7 @@ const {
 } = mongoose;
 
 // resume-details
-const resumeDetailsSchema = Schema({
+const resumeDetailsSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
         ref: 'users',
