@@ -22,4 +22,6 @@ const adminSchema = new Schema({
  * We can Add Bcrypt for hashing password 
  */
 
-module.exports = mongoose.model('Admin', adminSchema);
+module.exports = {
+    adminSchema = mongoose.model('Admin', adminSchema)
+};
