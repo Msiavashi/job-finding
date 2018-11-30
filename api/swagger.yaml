@@ -1,843 +1,121 @@
 ---
 swagger: "2.0"
 info:
+  description: "No description"
   version: "1.0.0"
-  title: "Jobjoo API Documentation"
-host: "localhost:4000"
-basePath: "/"
-tags: []
-schemes:
-- "http"
+  title: "jobjoo"
+  contact: {}
+tags:
+- name: "Web"
+  description: "web routes"
+- name: "Applicant"
+  description: "applicant apis"
+- name: "Employer"
+  description: "Employer APIs"
+- name: "Admin"
+  description: "Admin APIs"
+- name: "Search"
+  description: "public apis for search"
+- name: "Resume"
+  description: "Resume Creation Applicant APIs"
+- name: "Institution"
+  description: "Institution Related APIs"
+- name: "Site"
+  description: "Site Public APIs"
+- name: "Profile"
+  description: "these apis are used if employer and employee had same profile (future\
+    \ use)"
 paths:
   /:
     get:
       tags:
-      - ""
-      summary: "Root API"
-      operationId: "get"
+      - "Web"
+      operationId: "getAppRoot"
       parameters: []
       responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "DefaultController"
-  /account/logout:
+        200:
+          description: "Status 200"
+      x-swagger-router-controller: "Web"
+  /api/v1/applicant/{aid}/applies:
     get:
       tags:
-      - "account"
-      summary: "Logout API"
-      operationId: "getAccountLogout"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Account"
-  /account/user:
-    get:
-      tags:
-      - "account"
-      summary: "Validate User API"
-      operationId: "getAccountUser"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Account"
-  /admin/companies:
-    get:
-      tags:
-      - "admin"
-      summary: "Get List Of All Companies [Only Admins]"
-      operationId: "getAdminCompanies"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Admin"
-  /admin/users:
-    get:
-      tags:
-      - "admin"
-      summary: "List All Users [Only Admins]"
-      operationId: "getAdminUsers"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Admin"
-  /basic-info/countries:
-    get:
-      tags:
-      - "basic-info"
-      summary: "Get List Of All Countries"
-      operationId: "getBasicinfoCountries"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-    post:
-      tags:
-      - "basic-info"
-      summary: "Post Countries [Only Admins]"
-      operationId: "postBasicinfoCountries"
+      - "Applicant"
+      operationId: "getApiV1ApplicantAidApplies"
+      produces:
+      - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 5"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/countries-and-states:
-    get:
-      tags:
-      - "basic-info"
-      summary: "Get List Of All Countries And Their Related States"
-      operationId: "getBasicinfoCountriesandstates"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/countries-and-states-and-cities:
-    get:
-      tags:
-      - "basic-info"
-      summary: "Get List Of All Countries And Their Related States And Their Related\
-        \ Cities"
-      operationId: "getBasicinfoCountriesandstatesandcities"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/languages:
-    get:
-      tags:
-      - "basic-info"
-      summary: "Get List Of All Languages"
-      operationId: "getBasicinfoLanguages"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-    post:
-      tags:
-      - "basic-info"
-      summary: "Post Language (Only Admins)"
-      operationId: "postBasicinfoLanguages"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 6"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/skills-and-categories:
-    get:
-      tags:
-      - "basic-info"
-      summary: "Get List Of All Categories And Their Related Skills"
-      operationId: "getBasicinfoSkillsandcategories"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/skills-category:
-    get:
-      tags:
-      - "basic-info"
-      summary: "Get List Of All Skill Categories"
-      operationId: "getBasicinfoSkillscategory"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-    post:
-      tags:
-      - "basic-info"
-      summary: "Post Skills Category [Only Admins]"
-      operationId: "postBasicinfoSkillscategory"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 8"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/states-and-cities:
-    get:
-      tags:
-      - "basic-info"
-      summary: "Get List Of All States And Their Related Cities"
-      operationId: "getBasicinfoStatesandcities"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /jobs/{company}:
-    get:
-      tags:
-      - "jobs"
-      summary: "Find Jobs Of A Company"
-      operationId: "getJobsCompany"
-      parameters:
-      - name: "company"
+      - name: "aid"
         in: "path"
         required: true
         type: "string"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Jobs"
-  /profile/profile-image:
-    get:
-      tags:
-      - "profile"
-      summary: "Get Profile Image"
-      operationId: "getProfileProfileimage"
-      parameters:
-      - name: "responseType"
+      - name: "pagenum"
         in: "query"
-        required: true
-        type: "string"
+        required: false
+        type: "number"
+        format: "double"
+      - name: "pagesize"
+        in: "query"
+        required: false
+        type: "number"
+        format: "double"
       responses:
-        default:
-          description: "Successful"
+        200:
+          description: "Status 200"
           schema:
-            type: "string"
-      x-swagger-router-controller: "Profile"
+            type: "array"
+            items:
+              $ref: "#/definitions/anonymousRepresentation18"
+      x-swagger-router-controller: "Applicant"
+  /api/v1/applicant/{aid}/institution:
     post:
       tags:
-      - "profile"
-      summary: "Upload Profile Image"
-      operationId: "postProfileProfileimage"
+      - "Institution"
+      description: "used by applicant to register a institution where they attended\
+        \ to add institution in database if they are not exist"
+      operationId: "postApiV1ApplicantAidInstitution"
       consumes:
-      - "multipart/form-data"
+      - "application/json"
+      produces:
+      - "application/json"
       parameters:
-      - name: "data"
-        in: "formData"
-        description: "Select a file to upload"
-        required: true
-        type: "file"
-        x-meta:
-          swaggerType: "file"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Profile"
-  /resume-creator/resume:
-    get:
-      tags:
-      - "resume-creator"
-      summary: "Get Complete Resume"
-      operationId: "getResumecreatorResume"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "ResumeCreator"
-  /resume-creator/step-five:
-    get:
-      tags:
-      - "resume-creator"
-      summary: "Get Step Five Data"
-      operationId: "getResumecreatorStepfive"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "ResumeCreator"
-    post:
-      tags:
-      - "resume-creator"
-      summary: "Post Step Five Data"
-      operationId: "postResumecreatorStepfive"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 19"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "ResumeCreator"
-  /resume-creator/step-four:
-    get:
-      tags:
-      - "resume-creator"
-      summary: "Get Step Four Data"
-      operationId: "getResumecreatorStepfour"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "ResumeCreator"
-    post:
-      tags:
-      - "resume-creator"
-      summary: "Post Step Four Data"
-      operationId: "postResumecreatorStepfour"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 22"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "ResumeCreator"
-  /resume-creator/step-one:
-    get:
-      tags:
-      - "resume-creator"
-      summary: "Get Step One Data"
-      operationId: "getResumecreatorStepone"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "ResumeCreator"
-    post:
-      tags:
-      - "resume-creator"
-      summary: "Post Step One Data"
-      operationId: "postResumecreatorStepone"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 23"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "ResumeCreator"
-  /resume-creator/step-three:
-    get:
-      tags:
-      - "resume-creator"
-      summary: "Get Step Three Data"
-      operationId: "getResumecreatorStepthree"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "ResumeCreator"
-    post:
-      tags:
-      - "resume-creator"
-      summary: "Post Step Three Data"
-      operationId: "postResumecreatorStepthree"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 25"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "ResumeCreator"
-  /resume-creator/step-two:
-    get:
-      tags:
-      - "resume-creator"
-      summary: "Get Step Two Data"
-      operationId: "getResumecreatorSteptwo"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "ResumeCreator"
-    post:
-      tags:
-      - "resume-creator"
-      summary: "Post Step Two Data"
-      operationId: "postResumecreatorSteptwo"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 27"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "ResumeCreator"
-  /test/test-authentication:
-    get:
-      tags:
-      - "test"
-      summary: "Authentication Test"
-      operationId: "getTestTestauthentication"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Test"
-  /admin/user-resume/{userid}:
-    get:
-      tags:
-      - "admin"
-      summary: "Get User Resume [Only Admins]"
-      operationId: "getAdminUserresumeUserid"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Admin"
-  /api/v1/paintings:
-    get:
-      tags:
-      - "api"
-      summary: "Get All The Paintings"
-      operationId: "getApiV1Paintings"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Api"
-    post:
-      tags:
-      - "api"
-      summary: "Get A Specific Painting By ID"
-      operationId: "postApiV1Paintings"
-      parameters: []
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Api"
-  /basic-info/cities/{stateid}:
-    get:
-      tags:
-      - "basic-info"
-      summary: "Get List Of All Cities"
-      operationId: "getBasicinfoCitiesStateid"
-      parameters:
-      - name: "stateid"
+      - name: "aid"
         in: "path"
         required: true
         type: "string"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/skills/{categoryid}:
-    get:
-      tags:
-      - "basic-info"
-      summary: "Get List Of All Skills"
-      operationId: "getBasicinfoSkillsCategoryid"
-      parameters:
-      - name: "categoryid"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/states/{countryid}:
-    get:
-      tags:
-      - "basic-info"
-      summary: "Get List Of All States"
-      operationId: "getBasicinfoStatesCountryid"
-      parameters:
-      - name: "countryid"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /search/complex/jobs:
-    get:
-      tags:
-      - "search"
-      summary: "Return A List Of Jobs Based On Query [Complex Search]"
-      operationId: "getSearchComplexJobs"
-      parameters:
-      - name: "q"
-        in: "query"
-        required: true
-        type: "string"
-        maxLength: 30
-      - name: "contractTypes"
-        in: "query"
-        required: false
-        type: "string"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Search"
-  /search/simple/jobs:
-    get:
-      tags:
-      - "search"
-      summary: "Return A List Of Jobs Based On Query [Simple Search]"
-      operationId: "getSearchSimpleJobs"
-      parameters:
-      - name: "q"
-        in: "query"
-        required: true
-        type: "string"
-        maxLength: 30
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Search"
-  /account/login:
-    post:
-      tags:
-      - "account"
-      summary: "Login API"
-      operationId: "postAccountLogin"
-      parameters:
       - in: "body"
         name: "body"
         required: false
         schema:
-          $ref: "#/definitions/Model 1"
+          $ref: "#/definitions/anonymousRepresentation73"
       responses:
-        default:
-          description: "Successful"
+        200:
+          description: "Status 200"
           schema:
-            type: "string"
-      x-swagger-router-controller: "Account"
-  /account/signup:
+            $ref: "#/definitions/anonymousRepresentation74"
+        401:
+          description: "Status 401"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation75"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation76"
+      x-swagger-router-controller: "Institution"
+  /api/v1/applicant/{aid}/job/{jid}/apply:
     post:
       tags:
-      - "account"
-      summary: "SignUp API"
-      operationId: "postAccountSignup"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 2"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Account"
-  /admin/get-documents:
-    post:
-      tags:
-      - "admin"
-      summary: "List All Documents In Given Collection"
-      operationId: "postAdminGetdocuments"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 3"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Admin"
-  /basic-info/cities:
-    post:
-      tags:
-      - "basic-info"
-      summary: "Post Cities [Only Admins]"
-      operationId: "postBasicinfoCities"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 4"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/skills:
-    post:
-      tags:
-      - "basic-info"
-      summary: "Post Skill [Only Admins]"
-      operationId: "postBasicinfoSkills"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 7"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/states:
-    post:
-      tags:
-      - "basic-info"
-      summary: "Post States [Only Admins]"
-      operationId: "postBasicinfoStates"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 9"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /jobs/new-job:
-    post:
-      tags:
-      - "jobs"
-      summary: "Post A New Job"
-      operationId: "postJobsNewjob"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 12"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Jobs"
-  /profile/recruiter-data:
-    post:
-      tags:
-      - "profile"
-      summary: "Store Recruiter Profile Data"
-      operationId: "postProfileRecruiterdata"
+      - "Applicant"
+      operationId: "postApiV1ApplicantAidJobJidApply"
       consumes:
-      - "multipart/form-data"
+      - "application/json"
+      produces:
+      - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 13"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Profile"
-  /profile/user-data:
-    post:
-      tags:
-      - "profile"
-      summary: "Store Primary Profile Data"
-      operationId: "postProfileUserdata"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 14"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Profile"
-  /register/register-number:
-    post:
-      tags:
-      - "register"
-      summary: "Register Phone Number"
-      operationId: "postRegisterRegisternumber"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 15"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Register"
-  /register/validate-number:
-    post:
-      tags:
-      - "register"
-      summary: "Validate Registered Number"
-      operationId: "postRegisterValidatenumber"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 16"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Register"
-  /register/validate-number-set-user:
-    post:
-      tags:
-      - "register"
-      summary: "Validate Registered Number and set user "
-      operationId: "postRegisterValidatenumbersetuser"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 17"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Register"
-  /test/validations:
-    post:
-      tags:
-      - "test"
-      summary: "Test Different Validations"
-      operationId: "postTestValidations"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: false
-        schema:
-          $ref: "#/definitions/Model 28"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "Test"
-  /basic-info/category-name/{categoryid}:
-    post:
-      tags:
-      - "basic-info"
-      summary: "Get Specific Category Details [Only Admins]"
-      operationId: "postBasicinfoCategorynameCategoryid"
-      parameters:
-      - name: "categoryid"
+      - name: "aid"
         in: "path"
         required: true
         type: "string"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/location-name/{id}:
-    post:
-      tags:
-      - "basic-info"
-      summary: "Get Location Details Based On Id"
-      operationId: "postBasicinfoLocationnameId"
-      parameters:
-      - name: "id"
+      - name: "jid"
         in: "path"
         required: true
         type: "string"
@@ -845,975 +123,1270 @@ paths:
         name: "body"
         required: false
         schema:
-          $ref: "#/definitions/Model 29"
+          $ref: "#/definitions/anonymousRepresentation14"
       responses:
-        default:
-          description: "Successful"
+        200:
+          description: "Status 200"
           schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /admin/delete-documents:
-    delete:
+            $ref: "#/definitions/anonymousRepresentation15"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation16"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation17"
+      x-swagger-router-controller: "Applicant"
+  /api/v1/applicant/{aid}/profile:
+    get:
       tags:
-      - "admin"
-      summary: "Delete All Documents From A Collection"
-      operationId: "deleteAdminDeletedocuments"
+      - "Applicant"
+      operationId: "getApiV1ApplicantAidProfile"
+      produces:
+      - "application/json"
       parameters:
+      - name: "aid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation4"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation5"
+      x-swagger-router-controller: "Applicant"
+    patch:
+      tags:
+      - "Applicant"
+      operationId: "patchApiV1ApplicantAidProfile"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "aid"
+        in: "path"
+        required: true
+        type: "string"
       - in: "body"
         name: "body"
         required: false
         schema:
-          $ref: "#/definitions/Model 3"
+          $ref: "#/definitions/anonymousRepresentation"
       responses:
-        default:
-          description: "Successful"
+        200:
+          description: "Status 200"
           schema:
-            type: "string"
-      x-swagger-router-controller: "Admin"
-  /admin/drop-db:
+            $ref: "#/definitions/anonymousRepresentation2"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation3"
+      x-swagger-router-controller: "Applicant"
+  /api/v1/applicant/{aid}/profile/image:
+    get:
+      tags:
+      - "Applicant"
+      operationId: "getApiV1ApplicantAidProfileImage"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "aid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation6"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation7"
+        401:
+          description: "Status 401"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation8"
+      x-swagger-router-controller: "Applicant"
     delete:
       tags:
-      - "admin"
-      summary: "Drop Database"
-      operationId: "deleteAdminDropdb"
+      - "Applicant"
+      operationId: "deleteApiV1ApplicantAidProfileImage"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "aid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation9"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation10"
+      x-swagger-router-controller: "Applicant"
+    patch:
+      tags:
+      - "Applicant"
+      operationId: "patchApiV1ApplicantAidProfileImage"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "aid"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation11"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation12"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation13"
+      x-swagger-router-controller: "Applicant"
+  /api/v1/categories:
+    get:
+      tags:
+      - "Site"
+      operationId: "getApiV1Categories"
+      produces:
+      - "application/json"
       parameters: []
       responses:
-        default:
-          description: "Successful"
+        200:
+          description: "Status 200"
           schema:
-            type: "string"
+            type: "array"
+            items:
+              $ref: "#/definitions/anonymousRepresentation91"
+      x-swagger-router-controller: "Site"
+  /api/v1/category/{cid}/skills:
+    get:
+      tags:
+      - "Site"
+      operationId: "getApiV1CategoryCidSkills"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "cid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/anonymousRepresentation92"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation93"
+      x-swagger-router-controller: "Site"
+  /api/v1/countries:
+    get:
+      tags:
+      - "Site"
+      operationId: "getApiV1Countries"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/anonymousRepresentation85"
+      x-swagger-router-controller: "Site"
+  /api/v1/country/{cid}/state/{sid}/cities:
+    get:
+      tags:
+      - "Site"
+      operationId: "getApiV1CountryCidStateSidCities"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "cid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "sid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/anonymousRepresentation88"
+        404:
+          description: "Status 404"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation89"
+      x-swagger-router-controller: "Site"
+  /api/v1/country/{cid}/states:
+    get:
+      tags:
+      - "Site"
+      operationId: "getApiV1CountryCidStates"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "cid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/anonymousRepresentation86"
+        404:
+          description: "Status 404"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation87"
+      x-swagger-router-controller: "Site"
+  /api/v1/employer/{eid}/institution:
+    post:
+      tags:
+      - "Institution"
+      operationId: "postApiV1EmployerEidInstitution"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation61"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation62"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation63"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation64"
+      x-swagger-router-controller: "Institution"
+  /api/v1/employer/{eid}/institution/{eid}:
+    get:
+      tags:
+      - "Institution"
+      operationId: "getApiV1EmployerEidInstitutionEid"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation65"
+        404:
+          description: "Status 404"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation66"
+      x-swagger-router-controller: "Institution"
+    delete:
+      tags:
+      - "Institution"
+      operationId: "deleteApiV1EmployerEidInstitutionEid"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation71"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation72"
+      x-swagger-router-controller: "Institution"
+    patch:
+      tags:
+      - "Institution"
+      description: "only who created the institution can patch it"
+      operationId: "patchApiV1EmployerEidInstitutionEid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation67"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation68"
+        404:
+          description: "Status 404"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation69"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation70"
+      x-swagger-router-controller: "Institution"
+  /api/v1/employer/{eid}/job:
+    post:
+      tags:
+      - "Employer"
+      operationId: "postApiV1EmployerEidJob"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation19"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation20"
+        401:
+          description: "Status 401"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation21"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation22"
+      x-swagger-router-controller: "Employer"
+  /api/v1/employer/{eid}/job/{jid}:
+    get:
+      tags:
+      - "Employer"
+      operationId: "getApiV1EmployerEidJobJid"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation36"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation37"
+      x-swagger-router-controller: "Employer"
+    patch:
+      tags:
+      - "Employer"
+      operationId: "patchApiV1EmployerEidJobJid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jid"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation38"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation39"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation40"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation41"
+      x-swagger-router-controller: "Employer"
+  /api/v1/employer/{eid}/jobs:
+    get:
+      tags:
+      - "Site"
+      operationId: "getApiV1EmployerEidJobs"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/anonymousRepresentation96"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation97"
+      x-swagger-router-controller: "Site"
+  /api/v1/employer/{eid}/profile:
+    get:
+      tags:
+      - "Employer"
+      operationId: "getApiV1EmployerEidProfile"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation26"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation27"
+      x-swagger-router-controller: "Employer"
+    patch:
+      tags:
+      - "Employer"
+      operationId: "patchApiV1EmployerEidProfile"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation23"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation24"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation25"
+      x-swagger-router-controller: "Employer"
+  /api/v1/employer/{eid}/profile/image:
+    get:
+      tags:
+      - "Employer"
+      operationId: "getApiV1EmployerEidProfileImage"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation28"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation29"
+        401:
+          description: "Status 401"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation30"
+      x-swagger-router-controller: "Employer"
+    delete:
+      tags:
+      - "Employer"
+      operationId: "deleteApiV1EmployerEidProfileImage"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation31"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation32"
+      x-swagger-router-controller: "Employer"
+    patch:
+      tags:
+      - "Employer"
+      operationId: "patchApiV1EmployerEidProfileImage"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eid"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation33"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation34"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation35"
+      x-swagger-router-controller: "Employer"
+  /api/v1/institution/{iid}/jobs:
+    get:
+      tags:
+      - "Site"
+      operationId: "getApiV1InstitutionIidJobs"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "iid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/anonymousRepresentation94"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation95"
+      x-swagger-router-controller: "Site"
+  /api/v1/institutions:
+    get:
+      tags:
+      - "Admin"
+      summary: "/api/v1/institutions"
+      description: "get list of institutions by pagination"
+      operationId: "getApiV1Institutions"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/anonymousRepresentation42"
+        404:
+          description: "Status 404"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation43"
       x-swagger-router-controller: "Admin"
-  /basic-info/cities/{cityid}:
-    delete:
+  /api/v1/languages:
+    get:
       tags:
-      - "basic-info"
-      summary: "Delete Specific City [Only Admins]"
-      operationId: "deleteBasicinfoCitiesCityid"
+      - "Site"
+      operationId: "getApiV1Languages"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/anonymousRepresentation90"
+      x-swagger-router-controller: "Site"
+  /api/v1/login:
+    post:
+      tags:
+      - "Site"
+      operationId: "postApiV1Login"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
       parameters:
-      - name: "cityid"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation80"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation81"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation82"
+      x-swagger-router-controller: "Site"
+  /api/v1/register:
+    post:
+      tags:
+      - "Site"
+      operationId: "postApiV1Register"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation77"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation78"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation79"
+      x-swagger-router-controller: "Site"
+  /api/v1/search/jobs:
+    get:
+      tags:
+      - "Search"
+      operationId: "getApiV1SearchJobs"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "query"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "pagenum"
+        in: "query"
+        required: false
+        type: "number"
+        format: "double"
+      - name: "pagesize"
+        in: "query"
+        required: false
+        type: "number"
+        format: "double"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/anonymousRepresentation46"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation47"
+      x-swagger-router-controller: "Search"
+  /api/v1/user/{uid}/logout:
+    post:
+      tags:
+      - "Site"
+      operationId: "postApiV1UserUidLogout"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "uid"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation83"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation84"
+      x-swagger-router-controller: "Site"
+  /api/v1/user/{uid}/profile:
+    get:
+      tags:
+      - "Profile"
+      operationId: "getApiV1UserUidProfile"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "uid"
         in: "path"
         required: true
         type: "string"
       responses:
-        default:
-          description: "Successful"
+        200:
+          description: "Status 200"
           schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/countries/{countryid}:
-    delete:
-      tags:
-      - "basic-info"
-      summary: "Delete Specific Country [Only Admins]"
-      operationId: "deleteBasicinfoCountriesCountryid"
-      parameters:
-      - name: "countryid"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/languages/{languageid}:
-    delete:
-      tags:
-      - "basic-info"
-      summary: "Delete Specific Language [Only Admins]"
-      operationId: "deleteBasicinfoLanguagesLanguageid"
-      parameters:
-      - name: "languageid"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/skills/{skillid}:
-    delete:
-      tags:
-      - "basic-info"
-      summary: "Delete Specific Skill [Only Admins]"
-      operationId: "deleteBasicinfoSkillsSkillid"
-      parameters:
-      - name: "skillid"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/skills-category/{categoryid}:
-    delete:
-      tags:
-      - "basic-info"
-      summary: "Delete Specific Category [Only Admins]"
-      operationId: "deleteBasicinfoSkillscategoryCategoryid"
-      parameters:
-      - name: "categoryid"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /basic-info/states/{stateid}:
-    delete:
-      tags:
-      - "basic-info"
-      summary: "Delete Specific State [Only Admins]"
-      operationId: "deleteBasicinfoStatesStateid"
-      parameters:
-      - name: "stateid"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
-      x-swagger-router-controller: "BasicInfo"
-  /profile/profile-type/{profile_type}:
-    put:
-      tags:
-      - "profile"
-      summary: "Set Profile Type (Recruiter / Recruitee)"
-      operationId: "putProfileProfiletypeProfile_type"
-      parameters:
-      - name: "profile_type"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        default:
-          description: "Successful"
-          schema:
-            type: "string"
+            $ref: "#/definitions/anonymousRepresentation111"
       x-swagger-router-controller: "Profile"
-securityDefinitions:
-  jwt:
-    type: "apiKey"
-    name: "Authorization"
-    in: "header"
+    patch:
+      tags:
+      - "Profile"
+      operationId: "patchApiV1UserUidProfile"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "uid"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation107"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation108"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation109"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation110"
+      x-swagger-router-controller: "Profile"
+  /api/v1/user/{uid}/profile/image:
+    get:
+      tags:
+      - "Profile"
+      description: "get user profile image"
+      operationId: "getApiV1UserUidProfileImage"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "uid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation98"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation99"
+      x-swagger-router-controller: "Profile"
+    post:
+      tags:
+      - "Profile"
+      operationId: "postApiV1UserUidProfileImage"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "uid"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation103"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation104"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation105"
+        401:
+          description: "Status 401"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation106"
+      x-swagger-router-controller: "Profile"
+    delete:
+      tags:
+      - "Profile"
+      operationId: "deleteApiV1UserUidProfileImage"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "uid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation100"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation101"
+        401:
+          description: "Status 401"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation102"
+      x-swagger-router-controller: "Profile"
+  /api/v1/user/{uid}/resume:
+    get:
+      tags:
+      - "Resume"
+      description: "only Admin and User him/herself can retrieve resume"
+      operationId: "getApiV1UserUidResume"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "uid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation48"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation49"
+        401:
+          description: "Status 401"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation50"
+      x-swagger-router-controller: "Resume"
+    post:
+      tags:
+      - "Resume"
+      operationId: "postApiV1UserUidResume"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "uid"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation51"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation52"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation53"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation54"
+      x-swagger-router-controller: "Resume"
+    delete:
+      tags:
+      - "Resume"
+      operationId: "deleteApiV1UserUidResume"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "uid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation59"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation60"
+      x-swagger-router-controller: "Resume"
+    patch:
+      tags:
+      - "Resume"
+      operationId: "patchApiV1UserUidResume"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "uid"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/anonymousRepresentation55"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation56"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation57"
+        406:
+          description: "Status 406"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation58"
+      x-swagger-router-controller: "Resume"
+  /api/v1/users:
+    get:
+      tags:
+      - "Admin"
+      operationId: "getApiV1Users"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "pagneum"
+        in: "query"
+        required: false
+        type: "number"
+        format: "double"
+      - name: "pagesize"
+        in: "header"
+        required: false
+        type: "number"
+        format: "double"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/anonymousRepresentation44"
+        400:
+          description: "Status 400"
+          schema:
+            $ref: "#/definitions/anonymousRepresentation45"
+      x-swagger-router-controller: "Admin"
 definitions:
-  Model 1:
+  anonymousRepresentation:
     type: "object"
-    properties:
-      username:
-        type: "string"
-        default: "admin"
-      password:
-        type: "string"
-        maxLength: 15
-        default: "J0bj00@dmin123"
-      specialParameter:
-        type: "string"
-        default: "isAdmin"
-    example:
-      password: "J0bj00@dmin123"
-      specialParameter: "isAdmin"
-      username: "admin"
-  Model 2:
+  anonymousRepresentation2:
     type: "object"
-    required:
-    - "email"
-    properties:
-      specialParameter:
-        type: "string"
-      username:
-        type: "string"
-        maxLength: 12
-      password:
-        type: "string"
-        maxLength: 20
-      email:
-        type: "string"
-        x-format:
-          email: true
-      name:
-        type: "string"
-        maxLength: 20
-      surname:
-        type: "string"
-        maxLength: 20
-      nameFa:
-        type: "string"
-        maxLength: 20
-      surnameFa:
-        type: "string"
-        maxLength: 20
-      isAdmin:
-        type: "boolean"
-    example:
-      specialParameter: "specialParameter"
-      password: "password"
-      surname: "surname"
-      name: "name"
-      nameFa: "nameFa"
-      surnameFa: "surnameFa"
-      isAdmin: true
-      email: "email"
-      username: "username"
-  Model 3:
+  anonymousRepresentation3:
     type: "object"
-    required:
-    - "collectionName"
-    properties:
-      collectionName:
-        type: "string"
-    example:
-      collectionName: "collectionName"
-  Model 4:
+  anonymousRepresentation4:
     type: "object"
-    required:
-    - "cityName"
-    - "cityNameFa"
-    - "stateId"
-    properties:
-      stateId:
-        type: "string"
-      cityName:
-        type: "string"
-        maxLength: 15
-      cityNameFa:
-        type: "string"
-        maxLength: 15
-    example:
-      cityName: "cityName"
-      stateId: "stateId"
-      cityNameFa: "cityNameFa"
-  Model 5:
+  anonymousRepresentation5:
     type: "object"
-    required:
-    - "countryName"
-    - "countryNameFa"
-    properties:
-      countryName:
-        type: "string"
-        maxLength: 25
-      countryNameFa:
-        type: "string"
-        maxLength: 25
-    example:
-      countryNameFa: "countryNameFa"
-      countryName: "countryName"
-  Model 6:
+  anonymousRepresentation6:
     type: "object"
-    required:
-    - "languageName"
-    - "languageNameFa"
-    properties:
-      id:
-        type: "string"
-      languageName:
-        type: "string"
-      languageNameFa:
-        type: "string"
-    example:
-      id: "id"
-      languageName: "languageName"
-      languageNameFa: "languageNameFa"
-  Model 7:
+  anonymousRepresentation7:
     type: "object"
-    required:
-    - "skillCategoryId"
-    - "skillName"
-    - "skillNameFa"
-    properties:
-      skillCategoryId:
-        type: "string"
-      skillName:
-        type: "string"
-        maxLength: 15
-      skillNameFa:
-        type: "string"
-        maxLength: 15
-    example:
-      skillName: "skillName"
-      skillCategoryId: "skillCategoryId"
-      skillNameFa: "skillNameFa"
-  Model 8:
+  anonymousRepresentation8:
     type: "object"
-    required:
-    - "categoryName"
-    - "categoryNameFa"
-    properties:
-      categoryName:
-        type: "string"
-        maxLength: 15
-      categoryNameFa:
-        type: "string"
-        maxLength: 15
-    example:
-      categoryNameFa: "categoryNameFa"
-      categoryName: "categoryName"
-  Model 9:
+  anonymousRepresentation9:
     type: "object"
-    required:
-    - "countryId"
-    - "stateName"
-    - "stateNameFa"
-    properties:
-      countryId:
-        type: "string"
-      stateName:
-        type: "string"
-        maxLength: 15
-      stateNameFa:
-        type: "string"
-        maxLength: 15
-    example:
-      stateNameFa: "stateNameFa"
-      stateName: "stateName"
-      countryId: "countryId"
-  requiredSkills:
-    type: "array"
-    items:
-      type: "string"
-  Model 10:
+  anonymousRepresentation10:
     type: "object"
-    required:
-    - "exempted"
-    - "finished"
-    - "inProgress"
-    - "incomplete"
-    properties:
-      finished:
-        type: "boolean"
-      exempted:
-        type: "boolean"
-      inProgress:
-        type: "boolean"
-      incomplete:
-        type: "boolean"
-  militaryService:
-    type: "array"
-    items:
-      $ref: "#/definitions/Model 10"
-  Model 11:
+  anonymousRepresentation11:
     type: "object"
-    required:
-    - "associateDegree"
-    - "bachelors"
-    - "diploma"
-    - "masters"
-    - "phd"
-    properties:
-      diploma:
-        type: "boolean"
-      associateDegree:
-        type: "boolean"
-      bachelors:
-        type: "boolean"
-      masters:
-        type: "boolean"
-      phd:
-        type: "boolean"
-  degree:
-    type: "array"
-    items:
-      $ref: "#/definitions/Model 11"
-  Model 12:
+  anonymousRepresentation12:
     type: "object"
-    required:
-    - "ageRange"
-    - "agreeableSalary"
-    - "city"
-    - "degreeImportance"
-    - "experience"
-    - "jobDescription"
-    - "jobResponsibilities"
-    - "jobTitle"
-    - "militaryServiceImportance"
-    - "minimumRequirements"
-    - "neighbourhood"
-    - "state"
-    properties:
-      jobTitle:
-        type: "string"
-      jobDescription:
-        type: "string"
-      jobResponsibilities:
-        type: "string"
-      minimumRequirements:
-        type: "string"
-      requiredSkills:
-        $ref: "#/definitions/requiredSkills"
-      agreeableSalary:
-        type: "boolean"
-      salaryMin:
-        type: "number"
-        x-alternatives:
-        - type: "number"
-      salaryMax:
-        type: "number"
-        x-alternatives:
-        - type: "number"
-      ageRange:
-        type: "boolean"
-      ageMin:
-        type: "number"
-        x-alternatives:
-        - type: "number"
-      ageMax:
-        type: "number"
-        x-alternatives:
-        - type: "number"
-      experience:
-        type: "boolean"
-      experienceMin:
-        type: "number"
-        x-alternatives:
-        - type: "number"
-      experienceMax:
-        type: "number"
-        x-alternatives:
-        - type: "number"
-      cooperationType:
-        $ref: "#/definitions/requiredSkills"
-      militaryServiceImportance:
-        type: "boolean"
-      militaryService:
-        $ref: "#/definitions/militaryService"
-      degreeImportance:
-        type: "boolean"
-      degree:
-        $ref: "#/definitions/degree"
-      state:
-        type: "string"
-      city:
-        type: "string"
-      neighbourhood:
-        type: "string"
-    example:
-      ageRange: true
-      ageMax: 5.962133916683182377482808078639209270477294921875
-      city: "city"
-      jobTitle: "jobTitle"
-      experienceMin: 5.63737665663332876420099637471139430999755859375
-      militaryService: ""
-      degree: ""
-      experience: true
-      salaryMax: 6.02745618307040320615897144307382404804229736328125
-      jobResponsibilities: "jobResponsibilities"
-      ageMin: 1.46581298050294517310021547018550336360931396484375
-      militaryServiceImportance: true
-      cooperationType: ""
-      degreeImportance: true
-      neighbourhood: "neighbourhood"
-      jobDescription: "jobDescription"
-      requiredSkills: ""
-      experienceMax: 2.3021358869347654518833223846741020679473876953125
-      state: "state"
-      minimumRequirements: "minimumRequirements"
-      salaryMin: 0.80082819046101150206595775671303272247314453125
-      agreeableSalary: true
-  Model 13:
+  anonymousRepresentation13:
     type: "object"
-    required:
-    - "address"
-    - "group"
-    - "landline"
-    - "recruiterType"
-    properties:
-      recruiterType:
-        type: "string"
-        enum:
-        - "real"
-        - "legal"
-      fullName:
-        type: "string"
-        x-alternatives:
-        - type: "string"
-      nationalId:
-        type: "string"
-        x-alternatives:
-        - type: "string"
-      nationalCardPhoto:
-        type: "file"
-        x-alternatives:
-        - type: "file"
-          x-meta:
-            swaggerType: "file"
-          in: "formData"
-        x-meta:
-          swaggerType: "file"
-      companyName:
-        type: "string"
-        x-alternatives:
-        - type: "string"
-      registrationNumber:
-        type: "string"
-        x-alternatives:
-        - type: "string"
-      ceoName:
-        type: "string"
-        x-alternatives:
-        - type: "string"
-      numberOfEmployees:
-        type: "number"
-        x-alternatives:
-        - type: "number"
-      website:
-        type: "string"
-        x-alternatives:
-        - type: "string"
-      newspaperPhoto:
-        type: "file"
-        x-alternatives:
-        - type: "file"
-          x-meta:
-            swaggerType: "file"
-          in: "formData"
-        x-meta:
-          swaggerType: "file"
-      address:
-        type: "string"
-      landline:
-        type: "string"
-      group:
-        type: "string"
-  Model 14:
+  anonymousRepresentation14:
     type: "object"
-    properties:
-      nameEnglish:
-        type: "string"
-        maxLength: 20
-        default: "Farzad"
-      surnameEnglish:
-        type: "string"
-        maxLength: 30
-        default: "Soltani"
-      nameFarsi:
-        type: "string"
-        maxLength: 20
-        default: "فرزاد"
-      surnameFarsi:
-        type: "string"
-        maxLength: 30
-        default: "سلطانی"
-      userName:
-        type: "string"
-        maxLength: 15
-        default: "farzadso"
-      email:
-        type: "string"
-        default: "farzad.au@gmail.com"
-        x-format:
-          email: true
-      nationalId:
-        type: "string"
-        maxLength: 10
-        default: "0890054551"
-      passportNumber:
-        type: "string"
-        default: "H1234567"
-    example:
-      nameFarsi: "فرزاد"
-      passportNumber: "H1234567"
-      nationalId: "0890054551"
-      nameEnglish: "Farzad"
-      surnameEnglish: "Soltani"
-      surnameFarsi: "سلطانی"
-      userName: "farzadso"
-      email: "farzad.au@gmail.com"
-  Model 15:
+  anonymousRepresentation15:
     type: "object"
-    required:
-    - "phoneNumber"
-    properties:
-      phoneNumber:
-        type: "string"
-        x-constraint:
-          length: 10
-      purpose:
-        type: "string"
-        default: "register"
-        enum:
-        - "register"
-        - "login"
-    example:
-      phoneNumber: "phoneNumber"
-      purpose: "register"
-  Model 16:
+  anonymousRepresentation16:
     type: "object"
-    required:
-    - "phoneNumber"
-    - "verificationCode"
-    properties:
-      phoneNumber:
-        type: "string"
-        x-constraint:
-          length: 10
-      verificationCode:
-        type: "string"
-        x-constraint:
-          length: 4
-      purpose:
-        type: "string"
-        default: "register"
-        enum:
-        - "register"
-        - "login"
-      userRole:
-        type: "string"
-        x-alternatives:
-        - type: "string"
-        - type: "string"
-    example:
-      phoneNumber: "phoneNumber"
-      purpose: "register"
-      userRole: "userRole"
-      verificationCode: "verificationCode"
-  Model 17:
+  anonymousRepresentation17:
     type: "object"
-    required:
-    - "phoneNumber"
-    - "userRole"
-    - "verificationCode"
-    properties:
-      phoneNumber:
-        type: "string"
-        x-constraint:
-          length: 10
-      verificationCode:
-        type: "string"
-        x-constraint:
-          length: 4
-      userRole:
-        type: "string"
-    example:
-      phoneNumber: "phoneNumber"
-      userRole: "userRole"
-      verificationCode: "verificationCode"
-  Model 18:
+  anonymousRepresentation18:
     type: "object"
-    required:
-    - "languageId"
-    - "languageName"
-    - "perfection"
-    properties:
-      languageId:
-        type: "string"
-      languageName:
-        type: "string"
-      perfection:
-        type: "string"
-  languages:
-    type: "array"
-    items:
-      $ref: "#/definitions/Model 18"
-  jobPerks:
+  anonymousRepresentation19:
     type: "object"
-    required:
-    - "commutingServices"
-    - "flexibleTimes"
-    - "food"
-    - "foreignTrips"
-    - "insurance"
-    - "learningCourses"
-    - "loans"
-    - "overtime"
-    - "promotions"
-    properties:
-      promotions:
-        type: "boolean"
-      flexibleTimes:
-        type: "boolean"
-      insurance:
-        type: "boolean"
-      commutingServices:
-        type: "boolean"
-      learningCourses:
-        type: "boolean"
-      food:
-        type: "boolean"
-      overtime:
-        type: "boolean"
-      foreignTrips:
-        type: "boolean"
-      loans:
-        type: "boolean"
-    example:
-      insurance: true
-      promotions: true
-      learningCourses: true
-      flexibleTimes: true
-      commutingServices: true
-      loans: true
-      foreignTrips: true
-      overtime: true
-      food: true
-  Model 19:
+  anonymousRepresentation20:
     type: "object"
-    required:
-    - "languages"
-    - "professionLevel"
-    properties:
-      languages:
-        $ref: "#/definitions/languages"
-      professionLevel:
-        type: "string"
-      contractType:
-        type: "string"
-      jobPerks:
-        $ref: "#/definitions/jobPerks"
-    example:
-      languages: ""
-      contractType: "contractType"
-      jobPerks:
-        insurance: true
-        promotions: true
-        learningCourses: true
-        flexibleTimes: true
-        commutingServices: true
-        loans: true
-        foreignTrips: true
-        overtime: true
-        food: true
-      professionLevel: "professionLevel"
-  Model 20:
+  anonymousRepresentation21:
     type: "object"
-    required:
-    - "currentlyStudying"
-    - "educationalLevel"
-    - "fieldOfStudy"
-    - "institutionName"
-    - "startDate"
-    properties:
-      educationalLevel:
-        type: "string"
-      fieldOfStudy:
-        type: "string"
-      institutionName:
-        type: "string"
-      startDate:
-        type: "string"
-      endDate:
-        type: "string"
-      currentlyStudying:
-        type: "boolean"
-  educationalBackground:
-    type: "array"
-    items:
-      $ref: "#/definitions/Model 20"
-  Model 21:
+  anonymousRepresentation22:
     type: "object"
-    required:
-    - "certificateName"
-    properties:
-      certificateName:
-        type: "string"
-      certificateID:
-        type: "string"
-  academicCertificates:
-    type: "array"
-    items:
-      $ref: "#/definitions/Model 21"
-  Model 22:
+  anonymousRepresentation23:
     type: "object"
-    required:
-    - "educationalBackground"
-    properties:
-      educationalBackground:
-        $ref: "#/definitions/educationalBackground"
-      academicCertificates:
-        $ref: "#/definitions/academicCertificates"
-    example:
-      academicCertificates: ""
-      educationalBackground: ""
-  Model 23:
+  anonymousRepresentation24:
     type: "object"
-    required:
-    - "aboutMe"
-    - "city"
-    - "email"
-    - "employmentStatus"
-    - "maritalStatus"
-    - "name"
-    - "phoneNumber"
-    - "state"
-    - "surname"
-    properties:
-      name:
-        type: "string"
-        maxLength: 20
-        default: "فرزاد"
-      surname:
-        type: "string"
-        maxLength: 25
-        default: "سلطانی"
-      employmentStatus:
-        type: "number"
-      email:
-        type: "string"
-        default: "farzad.au@gmail.com"
-        x-format:
-          email: true
-      phoneNumber:
-        type: "string"
-        default: "9121111111"
-        x-constraint:
-          length: 10
-      maritalStatus:
-        type: "number"
-      state:
-        type: "string"
-      city:
-        type: "string"
-      aboutMe:
-        type: "string"
-        maxLength: 300
-    example:
-      phoneNumber: "9121111111"
-      city: "city"
-      surname: "سلطانی"
-      name: "فرزاد"
-      state: "state"
-      employmentStatus: 0.80082819046101150206595775671303272247314453125
-      email: "farzad.au@gmail.com"
-      maritalStatus: 6.02745618307040320615897144307382404804229736328125
-      aboutMe: "aboutMe"
-  Model 24:
+  anonymousRepresentation25:
     type: "object"
-    required:
-    - "companyName"
-    - "currentJob"
-    - "jobDescription"
-    - "jobTitle"
-    - "startDate"
-    properties:
-      jobTitle:
-        type: "string"
-      companyName:
-        type: "string"
-      startDate:
-        type: "string"
-      endDate:
-        type: "string"
-      currentJob:
-        type: "boolean"
-      jobDescription:
-        type: "string"
-  vocationalBackground:
-    type: "array"
-    items:
-      $ref: "#/definitions/Model 24"
-  Model 25:
+  anonymousRepresentation26:
     type: "object"
-    required:
-    - "vocationalBackground"
-    properties:
-      vocationalBackground:
-        $ref: "#/definitions/vocationalBackground"
-    example:
-      vocationalBackground: ""
-  Model 26:
+  anonymousRepresentation27:
     type: "object"
-    required:
-    - "skillId"
-    - "skillName"
-    - "skillNameFa"
-    properties:
-      skillId:
-        type: "string"
-      skillName:
-        type: "string"
-      skillNameFa:
-        type: "string"
-  skills:
-    type: "array"
-    items:
-      $ref: "#/definitions/Model 26"
-  Model 27:
+  anonymousRepresentation28:
     type: "object"
-    required:
-    - "skills"
-    properties:
-      skills:
-        $ref: "#/definitions/skills"
-    example:
-      skills: ""
-  Model 28:
+  anonymousRepresentation29:
     type: "object"
-    required:
-    - "a"
-    properties:
-      a:
-        type: "boolean"
-      b:
-        type: "string"
-        x-alternatives:
-        - type: "string"
-    example:
-      a: true
-      b: "b"
-  Model 29:
+  anonymousRepresentation30:
     type: "object"
-    required:
-    - "idType"
-    properties:
-      idType:
-        type: "string"
-        enum:
-        - "country"
-        - "state"
-        - "city"
-    example:
-      idType: "country"
-x-alt-definitions:
-  Model 1:
+  anonymousRepresentation31:
     type: "object"
-    properties:
-      finished:
-        type: "boolean"
-      exempted:
-        type: "boolean"
-      inProgress:
-        type: "boolean"
-      incomplete:
-        type: "boolean"
-    required:
-    - "finished"
-    - "exempted"
-    - "inProgress"
-    - "incomplete"
-  militaryService:
-    type: "array"
-    items:
-      $ref: "#/x-alt-definitions/Model 1"
-  Model 2:
+  anonymousRepresentation32:
     type: "object"
-    properties:
-      diploma:
-        type: "boolean"
-      associateDegree:
-        type: "boolean"
-      bachelors:
-        type: "boolean"
-      masters:
-        type: "boolean"
-      phd:
-        type: "boolean"
-    required:
-    - "diploma"
-    - "associateDegree"
-    - "bachelors"
-    - "masters"
-    - "phd"
-  degree:
-    type: "array"
-    items:
-      $ref: "#/x-alt-definitions/Model 2"
+  anonymousRepresentation33:
+    type: "object"
+  anonymousRepresentation34:
+    type: "object"
+  anonymousRepresentation35:
+    type: "object"
+  anonymousRepresentation36:
+    type: "object"
+  anonymousRepresentation37:
+    type: "object"
+  anonymousRepresentation38:
+    type: "object"
+  anonymousRepresentation39:
+    type: "object"
+  anonymousRepresentation40:
+    type: "object"
+  anonymousRepresentation41:
+    type: "object"
+  anonymousRepresentation42:
+    type: "object"
+  anonymousRepresentation43:
+    type: "object"
+  anonymousRepresentation44:
+    type: "object"
+  anonymousRepresentation45:
+    type: "object"
+  anonymousRepresentation46:
+    type: "object"
+  anonymousRepresentation47:
+    type: "object"
+  anonymousRepresentation48:
+    type: "object"
+  anonymousRepresentation49:
+    type: "object"
+  anonymousRepresentation50:
+    type: "object"
+  anonymousRepresentation51:
+    type: "object"
+  anonymousRepresentation52:
+    type: "object"
+  anonymousRepresentation53:
+    type: "object"
+  anonymousRepresentation54:
+    type: "object"
+  anonymousRepresentation55:
+    type: "object"
+  anonymousRepresentation56:
+    type: "object"
+  anonymousRepresentation57:
+    type: "object"
+  anonymousRepresentation58:
+    type: "object"
+  anonymousRepresentation59:
+    type: "object"
+  anonymousRepresentation60:
+    type: "object"
+  anonymousRepresentation61:
+    type: "object"
+  anonymousRepresentation62:
+    type: "object"
+  anonymousRepresentation63:
+    type: "object"
+  anonymousRepresentation64:
+    type: "object"
+  anonymousRepresentation65:
+    type: "object"
+  anonymousRepresentation66:
+    type: "object"
+  anonymousRepresentation67:
+    type: "object"
+  anonymousRepresentation68:
+    type: "object"
+  anonymousRepresentation69:
+    type: "object"
+  anonymousRepresentation70:
+    type: "object"
+  anonymousRepresentation71:
+    type: "object"
+  anonymousRepresentation72:
+    type: "object"
+  anonymousRepresentation73:
+    type: "object"
+  anonymousRepresentation74:
+    type: "object"
+  anonymousRepresentation75:
+    type: "object"
+  anonymousRepresentation76:
+    type: "object"
+  anonymousRepresentation77:
+    type: "object"
+  anonymousRepresentation78:
+    type: "object"
+  anonymousRepresentation79:
+    type: "object"
+  anonymousRepresentation80:
+    type: "object"
+  anonymousRepresentation81:
+    type: "object"
+  anonymousRepresentation82:
+    type: "object"
+  anonymousRepresentation83:
+    type: "object"
+  anonymousRepresentation84:
+    type: "object"
+  anonymousRepresentation85:
+    type: "object"
+  anonymousRepresentation86:
+    type: "object"
+  anonymousRepresentation87:
+    type: "object"
+  anonymousRepresentation88:
+    type: "object"
+  anonymousRepresentation89:
+    type: "object"
+  anonymousRepresentation90:
+    type: "object"
+  anonymousRepresentation91:
+    type: "object"
+  anonymousRepresentation92:
+    type: "object"
+  anonymousRepresentation93:
+    type: "object"
+  anonymousRepresentation94:
+    type: "object"
+  anonymousRepresentation95:
+    type: "object"
+  anonymousRepresentation96:
+    type: "object"
+  anonymousRepresentation97:
+    type: "object"
+  anonymousRepresentation98:
+    type: "object"
+  anonymousRepresentation99:
+    type: "object"
+  anonymousRepresentation100:
+    type: "object"
+  anonymousRepresentation101:
+    type: "object"
+  anonymousRepresentation102:
+    type: "object"
+  anonymousRepresentation103:
+    type: "object"
+  anonymousRepresentation104:
+    type: "object"
+  anonymousRepresentation105:
+    type: "object"
+  anonymousRepresentation106:
+    type: "object"
+  anonymousRepresentation107:
+    type: "object"
+  anonymousRepresentation108:
+    type: "object"
+  anonymousRepresentation109:
+    type: "object"
+  anonymousRepresentation110:
+    type: "object"
+  anonymousRepresentation111:
+    type: "object"
