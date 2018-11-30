@@ -1,59 +1,27 @@
 'use strict';
 
-var utils = require('../utils/writer.js');
-var Profile = require('../service/ProfileService');
+var url = require('url');
 
-module.exports.getProfileProfileimage = function getProfileProfileimage (req, res, next) {
-  var responseType = req.swagger.params['responseType'].value;
-  Profile.getProfileProfileimage(responseType)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+
+var Profile = require('./ProfileService');
+
+
+module.exports.deleteApiV1UserUidProfileImage = function deleteApiV1UserUidProfileImage (req, res, next) {
+  Profile.deleteApiV1UserUidProfileImage(req.swagger.params, res, next);
 };
 
-module.exports.postProfileProfileimage = function postProfileProfileimage (req, res, next) {
-  var data = req.swagger.params['data'].value;
-  Profile.postProfileProfileimage(data)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+module.exports.getApiV1UserUidProfile = function getApiV1UserUidProfile (req, res, next) {
+  Profile.getApiV1UserUidProfile(req.swagger.params, res, next);
 };
 
-module.exports.postProfileRecruiterdata = function postProfileRecruiterdata (req, res, next) {
-  var body = req.swagger.params['body'].value;
-  Profile.postProfileRecruiterdata(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+module.exports.getApiV1UserUidProfileImage = function getApiV1UserUidProfileImage (req, res, next) {
+  Profile.getApiV1UserUidProfileImage(req.swagger.params, res, next);
 };
 
-module.exports.postProfileUserdata = function postProfileUserdata (req, res, next) {
-  var body = req.swagger.params['body'].value;
-  Profile.postProfileUserdata(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+module.exports.patchApiV1UserUidProfile = function patchApiV1UserUidProfile (req, res, next) {
+  Profile.patchApiV1UserUidProfile(req.swagger.params, res, next);
 };
 
-module.exports.putProfileProfiletypeProfile_type = function putProfileProfiletypeProfile_type (req, res, next) {
-  var profile_type = req.swagger.params['profile_type'].value;
-  Profile.putProfileProfiletypeProfile_type(profile_type)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+module.exports.postApiV1UserUidProfileImage = function postApiV1UserUidProfileImage (req, res, next) {
+  Profile.postApiV1UserUidProfileImage(req.swagger.params, res, next);
 };
