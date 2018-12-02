@@ -14,7 +14,8 @@ const jobsSchema = new Schema({
     jobResponsibilities: String,
     minimumRequirements: String,
     requiredSkills: [{
-        skillId: String,
+        type: Schema.Types.ObjectId,
+        ref: 'skills'
     }],
     agreeableSalary: Boolean,
     salaryMin: Number,

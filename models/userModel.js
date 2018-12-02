@@ -34,6 +34,11 @@ const userDetailsSchema = new Schema({
     userName: String,
     nationalId: String,
     passportNumber: String,
+    resume: {
+        type: Schema.Types.ObjectId,
+        ref: 'resume-details'
+
+    }
 });
 
 // Register Users

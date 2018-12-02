@@ -12,7 +12,7 @@ const resumeDetailsSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users',
     },
-    stepOne: {
+    personalInformation: {
         name: String,
         surname: String,
         employmentStatus: Number,
@@ -24,7 +24,7 @@ const resumeDetailsSchema = new Schema({
         city: String,
         aboutMe: String,
     },
-    stepTwo: {
+    skill: {
         skills: [{
             skillId: {
                 type: Schema.Types.ObjectId,
@@ -32,19 +32,23 @@ const resumeDetailsSchema = new Schema({
             },
             skillName: String,
             skillNameFa: String,
+            skillLevel : String // We can use number too
         }],
     },
-    stepThree: {
+    exprience: {
         vocationalBackground: [{
             jobTitle: String,
-            companyName: String,
+            companyName: {
+                type: Schema.Types.ObjectId,
+                ref : 'recruiter-data'
+            },
             startDate: String,
             endDate: String,
             currentJob: Boolean,
             jobDescription: String,
         }],
     },
-    stepFour: {
+    education: {
         educationalBackground: [{
             educationalLevel: String,
             fieldOfStudy: String,
@@ -58,7 +62,7 @@ const resumeDetailsSchema = new Schema({
             certificateID: String,
         }],
     },
-    stepFive: {
+    language: {
         languages: [{
             languageId: {
                 type: Schema.Types.ObjectId,
@@ -68,19 +72,18 @@ const resumeDetailsSchema = new Schema({
             perfection: String,
         }],
         professionLevel: String,
-        contractType: String,
-        jobPerks: {
-            promotions: Boolean,
-            flexibleTimes: Boolean,
-            insurance: Boolean,
-            commutingServices: Boolean,
-            learningCourses: Boolean,
-            food: Boolean,
-            overtime: Boolean,
-            foreignTrips: Boolean,
-            loans: Boolean,
-        },
+    },
+
+    interested:{
+        title : String,
+        description: String
+    },
+
+    millitaryService :{
+        type: Boolean,
     }
+
+
 });
 
 module.exports = {
